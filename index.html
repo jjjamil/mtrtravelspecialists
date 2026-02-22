@@ -36,5 +36,29 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <!--
+      Netlify Forms detection form.
+      React renders the real form dynamically, so Netlify cannot detect it
+      during its post-build HTML scan. This static hidden copy registers the
+      form name and all field names with Netlify at deploy time.
+      It is never visible to users.
+    -->
+    <form name="tour-booking" data-netlify="true" netlify hidden>
+      <input type="hidden" name="form-name" value="tour-booking" />
+      <input type="text"   name="fullName" />
+      <input type="email"  name="email" />
+      <input type="tel"    name="phone" />
+      <select name="tour">
+        <option value="island-hopping">Island Hopping Adventure</option>
+        <option value="city-heritage">City Heritage Tour</option>
+        <option value="water-activities">Water Activities Package</option>
+        <option value="custom-private">Custom Private Tour</option>
+      </select>
+      <input type="date"   name="date" />
+      <input type="number" name="guests" />
+      <input type="text"   name="serviceType" />
+      <textarea name="message"></textarea>
+    </form>
   </body>
 </html>
